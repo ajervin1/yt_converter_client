@@ -1,7 +1,15 @@
 <template>
-	<div id="app" class="mt-4 w-50 mx-auto">
+	<div id="app" class="mt-4 w-75 mx-auto">
 		
 		<h2 class="text-center text-light ">Uncles Youtube Converter</h2>
+		<ol class="text-white">
+			<li>First Search The Videos You Want To Convert</li>
+			<li>Click On The Get Youtube Url Button</li>
+			<li>
+				Then Click Convert Button, Wait Till download button appears
+			</li>
+			<li>Click Download</li>
+		</ol>
 		<!--Chose Media-->
 		<div class="options mb-4">
 			<h6>
@@ -33,6 +41,7 @@
 			<button class="btn btn-primary" @click="resetDownload">Convert Another Video</button>
 		</div>
 		<!--Downlaod-->
+		<SearchVideos @changeurl="setYoutubeUrl"/>
 	</div>
 </template>
 
@@ -40,9 +49,11 @@
 	
 	
 	import { convertUrl } from './service'
+	import SearchVideos from './components/SearchVideos'
 	
 	export default {
 		name: 'App',
+		components: { SearchVideos },
 		data () {
 			return {
 				youtube_url: '',
@@ -53,6 +64,9 @@
 			}
 		},
 		methods: {
+			setYoutubeUrl (youtubeurl) {
+				this.youtube_url = youtubeurl;
+			},
 			resetDownload () {
 				this.youtube_url = ''
 				this.is_downloaded = false
