@@ -3,52 +3,47 @@
 		<h4 class="text-light  mb-4">Search Youtube Videos</h4>
 		
 		<!--Form-->
-		<form class="mb-10 d-flex" @submit.prevent="handleSearch">
+		<form class="mb-10 d-flex" @submit.prevent="searchVideos">
 			<input type="text" v-model="query" class="form-control rounded-right-0">
 			<button class="btn btn-primary rounded-left-0">Submit</button>
 		</form>
 		<!--Form-->
-		<!--Video List-->
-		<div class="row">
-			<div class="col-4 mb-4 text-white" v-for="video in videos">
-				<!--Video-->
-				<article>
-					<iframe class="img-fluid"
-					        :src="`https://www.youtube.com/embed/${video.id.videoId}`">
-					</iframe>
-					<div>
-						<button class="btn btn-primary btn-sm" @click="changeUrl(video.id.videoId)">Get
-							Youtube Url
-						</button>
-					
-					</div>
-				</article>
-			</div>
-		</div>
-		<!--Video List-->
+	
 	</main>
 </template>
 
 <script>
-	import { searchYoutubeVideos } from '../youtubeservice'
+	import axios from 'axios'
+	
+	const api_key = 'AIzaSyDcSdMGRD4JXS7uAGAqKW2uob0k0ZqS_yw'
+	const request = axios.create({
+		baseURL: 'https://youtube.googleapis.com/youtube/v3',
+		params: {
+			key: api_key,
+		}
+	})
+	
+	
 	
 	export default {
 		name: 'SearchVideos',
 		data () {
 			return {
 				query: 'nba',
-				videos: [],
-				youtube_url: 'https://www.youtube.com/watch?v='
 			}
 		},
 		methods: {
-			async handleSearch () {
-				this.videos = await searchYoutubeVideos(this.query)
+			async searchVideos () {
+				const { data } = await request.get('/search', {
+					params: {
+						part: 'snippet',
+						q: this.query,
+						type: 'video',
+						maxResults: 3
+					}
+				})
+				this.$store.state.videos = data.items;
 			},
-			changeUrl (videoId) {
-				const youtubeurl = this.youtube_url + videoId
-				this.$emit('changeurl', youtubeurl)
-			}
 		},
 	}
 </script>
