@@ -15,7 +15,7 @@
 			<span class="sr-only">Loading...</span>
 		</div>
 		<!--Spinner-->
-	
+		
 	</section>
 
 </template>
@@ -38,6 +38,9 @@
 		computed: {
 			youtube_url () {
 				return this.$store.state.youtube_url
+			},
+			download_url () {
+				return this.$store.state.download_url
 			}
 		},
 		methods: {
@@ -57,10 +60,11 @@
 				//  Edit The Url
 				const url = this.$store.state.download_url + `?filename=${ filename }`
 				const encoded = encodeURI(url)
+				
 				this.$store.state.download_url = encoded
 				this.show_spinner = false
 				this.$store.state.is_downloaded = true
-			
+				
 			}
 		}
 	}

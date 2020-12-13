@@ -1,6 +1,5 @@
 <template>
 	<main id="app" class="mt-4 text-white">
-	
 		<!--Media Options-->
 		<MediaOptions class="mb-5"/>
 		<!--Media Options-->
@@ -8,12 +7,12 @@
 		<YoutubeForm/>
 		<!--YoutubeForm-->
 		<!--Download Button-->
-		<DownloadButton />
+		<DownloadButton/>
 		<!--Download Button-->
 		<!--Search Videos-->
-		<SearchVideos />
+		<SearchVideos/>
 		<!--Search Videos-->
-		<VideoList />
+		<VideoList/>
 		<!--Search Videos-->
 	</main>
 </template>

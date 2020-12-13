@@ -1,7 +1,7 @@
 <template>
 	<!--Download Show When Download Is Complete-->
 	<div v-show="is_downloaded" class="mt-4">
-		<a @click="reset" class="btn btn-primary" ref="link" :href="download_url">Download</a>
+		<a @click="handleReset" class="btn btn-primary" ref="link" :href="download_url">Download</a>
 	</div>
 	<!--Downlaod-->
 </template>
@@ -18,8 +18,15 @@
 		methods: {
 			reset () {
 				this.$store.state.youtube_url = ''
-				localStorage.clear();
-				this.$store.state.is_downloaded = false;
+				localStorage.clear()
+				this.$store.state.is_downloaded = false
+			},
+			handleReset () {
+				this.reset()
+				setTimeout(() => {
+					this.$store.state.download_url = 'https://youtuber-converter.herokuapp.com/download'
+				}, 1000)
+				
 			}
 		},
 		computed: {
