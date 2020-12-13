@@ -26,11 +26,15 @@
 	import YoutubeForm from './components/YoutubeForm'
 	import DownloadButton from './components/DownloadButton'
 	import VideoList from './components/VideoList'
+	import { auth } from './db'
+	import firebase from 'firebase'
 	
 	export default {
 		name: 'App',
 		components: { VideoList, DownloadButton, YoutubeForm, MediaOptions, SearchVideos },
+		async mounted () {
 		
+		}
 		
 	}
 </script>

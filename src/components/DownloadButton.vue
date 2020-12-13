@@ -10,6 +10,8 @@
 	/*
 	* Make Get Request To Server To Download File
 	* */
+	import { analytics } from '../db'
+	
 	export default {
 		name: 'DownloadButton',
 		data () {
@@ -22,6 +24,7 @@
 				this.$store.state.is_downloaded = false
 			},
 			handleReset () {
+				analytics.logEvent('download')
 				this.reset()
 				setTimeout(() => {
 					this.$store.state.download_url = 'https://youtuber-converter.herokuapp.com/download'
