@@ -1,9 +1,6 @@
 <template>
-	<main id="app" class="mt-4 w-75 mx-auto text-white">
-		<div>
-			<strong>Youtube Url: </strong>
-			{{ $store.state.youtube_url }}
-		</div>
+	<main id="app" class="mt-4 text-white">
+	
 		<!--Media Options-->
 		<MediaOptions class="mb-5"/>
 		<!--Media Options-->

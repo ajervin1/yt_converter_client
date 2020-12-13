@@ -1,20 +1,20 @@
 <template>
 	<!--Chose Media-->
 	<section class="media-options mb-4">
-		<h6>
+		<h6 class="text-light mb-2">
 			Choose Media Type
 		</h6>
-		<label class="text-white d-block">Select Media Type</label>
+	
 		<!--Change Media-->
-		<button v-for="type in options"
-		        class="btn btn-success btn-sm mr-3"
-		        @click="changeMedia(type)"
-		>
-			{{ type }}
+		<button class="btn btn-success btn-sm mr-3" @click="changeMedia('video')">
+			Video
+		</button>
+		<button class="btn btn-info btn-sm mr-3" @click="changeMedia('audio')">
+			Audio
 		</button>
 		<!--Chnage Media-->
 		<div class="text-white-50 mt-2">
-			Selected Media Type: <span class="ml-2 text-light-primary">{{ media_type }}</span>
+			Selected Media Type: <span class="ml-2 badge badge-primary">{{ media_type }}</span>
 		</div>
 	</section>
 	<!--Chose Media-->
@@ -28,7 +28,7 @@
 		name: 'MediaOptions',
 		data () {
 			return {
-				options: [ 'audio', 'video' ]
+				options: [ 'video', 'audio' ]
 			}
 		},
 		computed: {

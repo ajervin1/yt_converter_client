@@ -1,10 +1,10 @@
 <template>
 	<main class="search mt-6">
-		<h4 class="text-light  mb-4">Search Youtube Videos</h4>
+		<h4 class="text-light  mb-4">Search Youtube Videos To Dowload</h4>
 		
 		<!--Form-->
 		<form class="mb-10 d-flex" @submit.prevent="searchVideos">
-			<input type="text" v-model="query" class="form-control rounded-right-0">
+			<input type="text" v-model="query" placeholder="Search Youtube" class="form-control rounded-right-0">
 			<button class="btn btn-primary rounded-left-0">Submit</button>
 		</form>
 		<!--Form-->
@@ -29,7 +29,7 @@
 		name: 'SearchVideos',
 		data () {
 			return {
-				query: 'nba',
+				query: '',
 			}
 		},
 		methods: {

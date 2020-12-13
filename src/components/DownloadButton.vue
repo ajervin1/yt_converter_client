@@ -1,8 +1,7 @@
 <template>
 	<!--Download Show When Download Is Complete-->
 	<div v-show="is_downloaded" class="mt-4">
-		<a class="btn btn-success" ref="link" :href="download_url">Download</a>
-		
+		<a @click="reset" class="btn btn-primary" ref="link" :href="download_url">Download</a>
 	</div>
 	<!--Downlaod-->
 </template>
@@ -15,6 +14,13 @@
 		name: 'DownloadButton',
 		data () {
 			return {}
+		},
+		methods: {
+			reset () {
+				this.$store.state.youtube_url = ''
+				localStorage.clear();
+				this.$store.state.is_downloaded = false;
+			}
 		},
 		computed: {
 			is_downloaded () {

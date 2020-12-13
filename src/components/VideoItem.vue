@@ -1,10 +1,10 @@
 <template>
 	<!--Video-->
-	<article>
-		<iframe class="img-fluid"
+	<article class="bg-secondary rounded border-0 shadow-lg">
+		<iframe class=""
 		        :src="`https://www.youtube.com/embed/${video.id.videoId}`">
 		</iframe>
-		<div>
+		<div class="p-3">
 			<button class="btn btn-primary btn-sm" @click="setYoutubeUrl(video.id.videoId)">
 				Get
 				Youtube Url
@@ -15,6 +15,9 @@
 </template>
 
 <script>
+	/*
+	* Display A Video
+	* */
 	export default {
 		name: 'VideoItem',
 		props: [ 'video' ],
@@ -30,3 +33,11 @@
 		}
 	}
 </script>
+<style>
+	
+	iframe {
+		width: 100%;
+		height: 225px;
+	}
+
+</style>

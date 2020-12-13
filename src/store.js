@@ -7,7 +7,7 @@ const store = new Vuex.Store({
 	state: {
 		media_type: 'video',
 		is_downloaded: false,
-		download_url: 'http://localhost:4000/download',
+		download_url: 'https://youtuber-converter.herokuapp.com/download',
 		videos: [],
 		youtube_url: ''
 	}
